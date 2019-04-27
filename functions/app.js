@@ -1,6 +1,7 @@
+const functions = require('firebase-functions');
 const express = require('express');
 const bodyParser = require('body-parser');
-const routes = require('./routes/index')
+const routes = require('./routes')
 
 const app = express();
 
@@ -17,4 +18,4 @@ app.listen(port, function () {
   console.log('listening on port 3000: http://localhost:3000');
 });
 
-module.exports = app;
+exports.api = functions.https.onRequest(app);
